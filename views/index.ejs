@@ -1,0 +1,18 @@
+<%- include("./partials/header.ejs") %>
+<div class="ui container">
+    <h1 class="ui header">Enrolled</h1>
+    
+    <div class="ui grid cards">
+        <% people.forEach((person) => { %>
+        <div class="card">
+            <div class="content">
+                <img class="right floated ui image rounded" src="https://images.pexels.com/photos/2078265/pexels-photo-2078265.jpeg?auto=compress&cs=tinysrgb&h=650&w=940">
+                <div class="header"><%= `${person.first} ${person.last}` %></div>
+                <div class="description"><%= person.bio.substring(0, 50)%>...</div>
+            </div>
+            <a class="ui bottom attached button" href="/students/<%= person._id%>"><i class="eye icon"></i>view</a>
+        </div>
+        <% }) %>
+    </div>
+</div>
+<%- include("./partials/footer.ejs") %>

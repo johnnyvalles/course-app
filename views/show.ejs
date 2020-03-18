@@ -1,0 +1,14 @@
+<%- include("./partials/header.ejs") %>
+<div class="ui container">
+    <h1 class="ui header">Information</h1>
+    <div class="ui segment">
+        <h2><i class="user icon"></i><%= `${person.first} ${person.last}` %></h2>
+        <p><i class="envelope icon"></i><%= person.email %></p>
+        <p><i class="tag icon"></i><%= person.studentId %></p>
+        <p><i class="book icon"></i><%= person.major %></p>
+        <p><i class="smile icon"></i><%= person.bio %></p>
+        <button class="ui blue basic button">Edit</button>
+        <button class="ui red basic button">Drop</button>
+    </div>
+</div>
+<%- include("./partials/footer.ejs") %>
