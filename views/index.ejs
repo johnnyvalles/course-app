@@ -10,7 +10,7 @@
                 <div class="header"><%= `${person.first} ${person.last}` %></div>
                 <div class="description"><%= person.bio.substring(0, 50)%>...</div>
             </div>
-            <a class="ui bottom attached button" href="/students/<%= person._id%>"><i class="eye icon"></i>view</a>
+            <a class="ui bottom primary attached button" href="/students/<%= person._id%>"><i class="eye icon"></i>view</a>
         </div>
         <% }) %>
     </div>

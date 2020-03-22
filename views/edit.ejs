@@ -1,0 +1,34 @@
+<%- include("./partials/header.ejs") %>
+<div class="ui container">
+    <h1 class="ui header">Edit</h1>
+    <form action="/students/<%= person._id %>?_method=PUT" method="POST" class="ui form">
+        <div class="fields">
+          <div class="field">
+            <label>First name</label>
+            <input type="text" placeholder="First Name" value="<%= person.first %>" name="person[first]" required>
+          </div>
+          <div class="field">
+            <label>Last name</label>
+            <input type="text" placeholder="Last Name" value="<%= person.last %>" name="person[last]" required>
+          </div>
+        </div>
+        <div class="field">
+            <label>Email</label>
+            <input type="email" placeholder="Email" value="<%= person.email %>" name="person[email]" required>
+        </div>
+        <div class="field">
+            <label>Major</label>
+            <input type="text" placeholder="Major" value="<%= person.major %>" name="person[major]" required>
+        </div>
+        <div class="field">
+          <label>Student ID</label>
+          <input type="text" placeholder="Student ID" value="<%= person.studentId %>" name="person[studentId]" minlength="7" maxlength="7" required>
+      </div>
+        <div class="field">
+            <label>Short Bio</label>
+            <textarea rows="2" name="person[bio]"><%= person.bio %></textarea>
+        </div>
+        <input type="submit" value="Submit" class="ui primary button">
+    </form>
+</div>
+<%- include("./partials/footer.ejs") %>

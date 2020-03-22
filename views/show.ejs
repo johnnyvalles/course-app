@@ -7,8 +7,10 @@
         <p><i class="tag icon"></i><%= person.studentId %></p>
         <p><i class="book icon"></i><%= person.major %></p>
         <p><i class="smile icon"></i><%= person.bio %></p>
-        <button class="ui blue basic button">Edit</button>
-        <button class="ui red basic button">Drop</button>
+        <a href="/students/<%= person._id %>/edit" class="ui blue basic button">Edit</a>
+        <form id="delete" action="/students/<%= person._id%>?_method=DELETE" method="POST" style="display: inline;">
+            <input type="submit" value="Drop" class="ui red basic button">
+        </form>
     </div>
 </div>
 <%- include("./partials/footer.ejs") %>
