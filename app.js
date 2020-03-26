@@ -35,22 +35,12 @@ const Person = mongoose.model("person", personSchema);
 
 
 // ***********************************************************
-// RESTful Routes
+// RESTful Routes (student)
 // ***********************************************************
 
 // Redirect ROOT to INDEX
 app.get("/", (req, res) => {
     res.redirect("/students");
-});
-
-// CREATE
-app.post("/students", (req, res) => {
-    Person.create(req.body.person, (err, newPerson) => {
-        if (err)
-            console.log(err);
-        else
-            res.redirect("students");
-    });
 });
 
 // INDEX
@@ -59,14 +49,25 @@ app.get("/students", (req, res) => {
         if (err) {
             console.log(err);
         } else {
-            res.render("index", {people: people});
+            res.render("students_index", { people: people });
         }
     });
 });
 
 // NEW
 app.get("/students/new", (req, res) => {
-    res.render("new");
+    res.render("students_new");
+});
+
+
+// CREATE
+app.post("/students", (req, res) => {
+    Person.create(req.body.person, (err, newPerson) => {
+        if (err)
+            console.log(err);
+        else
+            res.redirect("/students");
+    });
 });
 
 // SHOW
@@ -75,7 +76,7 @@ app.get("/students/:id", (req, res) => {
         if (err) {
             console.log(err);
         } else {
-            res.render("show", {person: person});
+            res.render("students_show", { person: person });
         }
     });
 });
@@ -86,7 +87,7 @@ app.get("/students/:id/edit", (req, res) => {
         if (err) {
             console.log(err);
         } else {
-            res.render("edit", { person: person });
+            res.render("students_edit", { person: person });
         }
     });
 });
