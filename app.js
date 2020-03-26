@@ -35,7 +35,7 @@ const Person = mongoose.model("person", personSchema);
 
 
 // ***********************************************************
-// RESTful Routes (student)
+// RESTful Routes (students)
 // ***********************************************************
 
 // Redirect ROOT to INDEX
@@ -58,7 +58,6 @@ app.get("/students", (req, res) => {
 app.get("/students/new", (req, res) => {
     res.render("students_new");
 });
-
 
 // CREATE
 app.post("/students", (req, res) => {
@@ -110,6 +109,47 @@ app.delete("/students/:id", (req, res) => {
         else
             res.redirect("/students");
     });
+});
+// ***********************************************************
+
+
+// ***********************************************************
+// RESTful Routes (assignments)
+// ***********************************************************
+
+// INDEX
+app.get("/assignments", (req, res) => {
+    res.render("assignments_index");
+});
+
+// NEW
+app.get("/assignments/new", (req, res) => {
+    res.render("assignments_new");
+});
+
+// CREATE
+app.post("/assignments", (req, res) => {
+    res.redirect("assignments");
+});
+
+// SHOW
+app.get("/assignments/:id", (req, res) => {
+    res.render("assignments_show");
+});
+
+// EDIT
+app.get("/assignments/:id/edit", (req, res) => {
+    res.render("assignments_edit");
+});
+
+// UPDATE
+app.put("/assignments/:id", (req, res) => {
+    res.redirect(`/assignments/${req.params.id}`);
+});
+
+// DELETE
+app.delete("/assignments/:id", (req, res) => {
+    res.redirect("assignments_index");
 });
 // ***********************************************************
 
