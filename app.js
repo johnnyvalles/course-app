@@ -166,17 +166,33 @@ app.get("/assignments/:id", (req, res) => {
 
 // EDIT
 app.get("/assignments/:id/edit", (req, res) => {
-    res.render("assignments_edit");
+    Assignment.findById(req.params.id, (err, doc) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.render("assignments_edit", { doc: doc });
+        }
+    });
 });
 
 // UPDATE
 app.put("/assignments/:id", (req, res) => {
-    res.redirect(`/assignments/${req.params.id}`);
+    Assignment.findByIdAndUpdate(req.params.id, req.body.doc, (err, updated) => {
+        if (err)
+            console.log(err);
+        else
+            res.redirect(`/assignments/${req.params.id}`);
+    });
 });
 
 // DELETE
 app.delete("/assignments/:id", (req, res) => {
-    res.redirect("assignments_index");
+    Assignment.findByIdAndDelete(req.params.id, (err) => {
+        if (err)
+            console.log(err);
+        else
+            res.redirect("/assignments");
+    });
 });
 // ***********************************************************
 

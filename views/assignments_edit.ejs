@@ -1,5 +1,26 @@
 <%- include("./partials/header.ejs") %>
 <div class="ui container">
     <h1 class="ui header">Edit Assignment</h1>
+    <form action="/assignments/<%= doc._id %>?_method=PUT" method="POST" class="ui form">
+        <div class="fields">
+          <div class="field">
+            <label>Name</label>
+            <input type="text" placeholder="Assignment Name" value="<%= doc.name %>" name="doc[name]" required>
+          </div>
+          <div class="field">
+            <label>Points</label>
+            <input type="text" placeholder="Points" value="<%= doc.points %>" name="doc[points]" required>
+          </div>
+        </div>
+        <div class="field">
+            <label>Release</label>
+            <input type="text" placeholder="Release Date" value="<%= doc.released %>" name="doc[released]" required>
+        </div>
+        <div class="field">
+            <label>Due</label>
+            <input type="text" placeholder="Due Date" value="<%= doc.due %>" name="doc[due]" required>
+        </div>
+        <input type="submit" value="Submit" class="ui primary button">
+    </form>
 </div>
 <%- include("./partials/footer.ejs") %>
