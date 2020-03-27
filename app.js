@@ -31,6 +31,15 @@ const personSchema = new mongoose.Schema({
 });
 
 const Person = mongoose.model("person", personSchema);
+
+const assignmentSchema = new mongoose.Schema({
+    name: { type: String, required: true },
+    points: { type: String, required: true },
+    released: { type: String, required: true },
+    due: { type: String, required: true }
+});
+
+const Assignment = mongoose.model("Assignment", assignmentSchema);
 // ***********************************************************
 
 
@@ -119,7 +128,13 @@ app.delete("/students/:id", (req, res) => {
 
 // INDEX
 app.get("/assignments", (req, res) => {
-    res.render("assignments_index");
+    Assignment.find({}, (err, docs) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.render("assignments_index", { docs: docs });
+        }
+    });
 });
 
 // NEW
