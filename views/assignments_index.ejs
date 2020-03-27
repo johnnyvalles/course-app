@@ -14,7 +14,7 @@
         <tbody>
             <% docs.forEach((doc) => { %>
             <tr>
-                <td data-label="assign-name"><%= doc.name %></td>
+                <td data-label="assign-name"><a href="/assignments/<%=doc._id%>"><%= doc.name %></a></td>
                 <td data-label="assign-points"><%= doc.points %></td>
                 <td data-label="assign-released"><%= doc.released %></td>
                 <td data-label="assign-due"><%= doc.due %></td>

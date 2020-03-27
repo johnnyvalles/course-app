@@ -156,7 +156,12 @@ app.post("/assignments", (req, res) => {
 
 // SHOW
 app.get("/assignments/:id", (req, res) => {
-    res.render("assignments_show");
+    Assignment.findById(req.params.id, (err, doc) => {
+        if (err)
+            console.log(err);
+        else
+            res.render("assignments_show", { doc: doc });
+    });
 });
 
 // EDIT
