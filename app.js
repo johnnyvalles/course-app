@@ -144,7 +144,14 @@ app.get("/assignments/new", (req, res) => {
 
 // CREATE
 app.post("/assignments", (req, res) => {
-    res.redirect("assignments");
+    Assignment.create(req.body.doc, (err, doc) => {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log(doc);
+            res.redirect("/assignments");
+        }
+    });
 });
 
 // SHOW
