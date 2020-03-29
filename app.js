@@ -113,14 +113,14 @@ app.get("/assignments", (req, res) => {
         if (err) {
             console.log(err);
         } else {
-            res.render("assignments_index", { docs: docs });
+            res.render("assignments/index", { docs: docs });
         }
     });
 });
 
 // NEW
 app.get("/assignments/new", (req, res) => {
-    res.render("assignments_new");
+    res.render("assignments/new");
 });
 
 // CREATE
@@ -141,7 +141,7 @@ app.get("/assignments/:id", (req, res) => {
         if (err)
             console.log(err);
         else
-            res.render("assignments_show", { doc: doc });
+            res.render("assignments/show", { doc: doc });
     });
 });
 
@@ -151,7 +151,7 @@ app.get("/assignments/:id/edit", (req, res) => {
         if (err) {
             console.log(err);
         } else {
-            res.render("assignments_edit", { doc: doc });
+            res.render("assignments/edit", { doc: doc });
         }
     });
 });
