@@ -39,14 +39,14 @@ app.get("/students", (req, res) => {
         if (err) {
             console.log(err);
         } else {
-            res.render("students_index", { people: people });
+            res.render("persons/index", { people: people });
         }
     });
 });
 
 // NEW
 app.get("/students/new", (req, res) => {
-    res.render("students_new");
+    res.render("persons/new");
 });
 
 // CREATE
@@ -65,7 +65,7 @@ app.get("/students/:id", (req, res) => {
         if (err) {
             console.log(err);
         } else {
-            res.render("students_show", { person: person });
+            res.render("persons/show", { person: person });
         }
     });
 });
@@ -76,7 +76,7 @@ app.get("/students/:id/edit", (req, res) => {
         if (err) {
             console.log(err);
         } else {
-            res.render("students_edit", { person: person });
+            res.render("persons/edit", { person: person });
         }
     });
 });
