@@ -2,7 +2,8 @@ const methodOverride = require("method-override");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const express = require("express");
-
+const Person = require("./models/person");
+const Assignment = require("./models/assignment");
 // ***********************************************************
 // Express Configuration
 // ***********************************************************
@@ -20,26 +21,6 @@ app.set("view engine", "ejs");
 // ***********************************************************
 mongoose.connect('mongodb://localhost:27017/gradebook_app',
     { useNewUrlParser: true, useUnifiedTopology: true });
-
-const personSchema = new mongoose.Schema({
-    first: { type: String, required: true },
-    last: { type: String, required: true },
-    email: { type: String, required: true },
-    studentId: { type: String, required: true },
-    major: { type: String, required: true },
-    bio: { type: String, required: true }
-});
-
-const Person = mongoose.model("person", personSchema);
-
-const assignmentSchema = new mongoose.Schema({
-    name: { type: String, required: true },
-    points: { type: String, required: true },
-    released: { type: String, required: true },
-    due: { type: String, required: true }
-});
-
-const Assignment = mongoose.model("Assignment", assignmentSchema);
 // ***********************************************************
 
 
