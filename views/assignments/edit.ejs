@@ -1,6 +1,7 @@
 <%- include("../partials/header.ejs") %>
 <div class="ui container">
     <h1 class="ui header">Edit Assignment</h1>
+    <hr>
     <form action="/assignments/<%= doc._id %>?_method=PUT" method="POST" class="ui form">
         <div class="fields">
           <div class="field">
