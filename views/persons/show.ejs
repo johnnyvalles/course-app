@@ -3,15 +3,22 @@
     <h1 class="ui header">Student Information</h1>
     <hr>
     <div class="ui segment">
-        <h2><i class="user icon"></i><%= `${person.first} ${person.last}` %></h2>
-        <p><i class="envelope icon"></i><%= person.email %></p>
-        <p><i class="tag icon"></i><%= person.studentId %></p>
-        <p><i class="book icon"></i><%= person.major %></p>
-        <p><i class="smile icon"></i><%= person.bio %></p>
-        <form action="/students/<%= person._id%>?_method=DELETE" method="POST">
-            <a href="/students/<%= person._id %>/edit" class="ui blue basic button">Edit</a>
-            <input type="submit" value="Drop" class="ui red basic button">
-        </form>
+        <div class="ui grid stackable">
+            <div class="four wide column">
+                <img class="ui rounded image" src="<%=person.img%>">
+            </div>
+            <div class="twelve wide column">
+                <h2><i class="user icon"></i><%= `${person.first} ${person.last}` %></h2>
+                <p><i class="envelope icon"></i><%= person.email %></p>
+                <p><i class="tag icon"></i><%= person.studentId %></p>
+                <p><i class="book icon"></i><%= person.major %></p>
+                <p><i class="smile icon"></i><%= person.bio %></p>
+                <form action="/students/<%= person._id%>?_method=DELETE" method="POST">
+                    <a href="/students/<%= person._id %>/edit" class="ui blue basic button">Edit</a>
+                    <input type="submit" value="Drop" class="ui red basic button">
+                </form>
+            </div>
+        </div>
     </div>
 </div>
 <%- include("../partials/footer.ejs") %>

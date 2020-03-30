@@ -7,7 +7,6 @@
         <% people.forEach((person) => { %>
         <div class="card">
             <div class="content">
-                <img class="right floated ui image rounded" src="<%=person.img%>">
                 <div class="header"><%= `${person.first} ${person.last}` %></div>
                 <div class="description"><%= person.bio.substring(0, 50)%>...</div>
             </div>
