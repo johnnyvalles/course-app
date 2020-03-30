@@ -7,8 +7,8 @@
         <p><i class="chart bar icon"></i><%= doc.points %> points</p>
         <p><i class="lock open icon"></i>Released on <%= doc.released %></p>
         <p><i class="lock closed icon"></i>Due on <%= doc.due %></p>
-        <a href="/assignments/<%= doc._id %>/edit" class="ui blue basic button">Edit</a>
-        <form id="delete-assignment" action="/assignments/<%= doc._id%>?_method=DELETE" method="POST" style="display: inline;">
+        <form action="/assignments/<%= doc._id%>?_method=DELETE" method="POST">
+            <a href="/assignments/<%= doc._id %>/edit" class="ui blue basic button">Edit</a>
             <input type="submit" value="Delete" class="ui red basic button">
         </form>
     </div>

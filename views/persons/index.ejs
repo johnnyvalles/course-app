@@ -2,7 +2,8 @@
 <div class="ui container">
     <h1 class="ui header">Enrolled Students</h1>
     <hr>
-    <div class="ui grid cards">
+    <a href="/students/new" id="create-student" class="ui primary button"><i class="add icon"></i>Enroll Student</a>
+    <div id="student-index" class="ui grid cards">
         <% people.forEach((person) => { %>
         <div class="card">
             <div class="content">

@@ -33,9 +33,9 @@ seedDB();
 // RESTful Routes (students)
 // ***********************************************************
 
-// Redirect ROOT to INDEX
+// Redirect ROOT to HOMEPAGE
 app.get("/", (req, res) => {
-    res.redirect("/students");
+    res.render("home");
 });
 
 // INDEX
