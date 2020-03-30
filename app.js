@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const express = require("express");
 const Person = require("./models/person");
 const Assignment = require("./models/assignment");
+const seedDB = require("./fakerseeds");
 
 
 // ***********************************************************
@@ -23,6 +24,8 @@ app.set("view engine", "ejs");
 // ***********************************************************
 mongoose.connect('mongodb://localhost:27017/gradebook_app',
     { useNewUrlParser: true, useUnifiedTopology: true });
+
+seedDB();
 // ***********************************************************
 
 
