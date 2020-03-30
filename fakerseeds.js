@@ -73,7 +73,7 @@ function seedDB() {
     let people = [];
     let homeworks = [];
 
-    for (let i = 0; i < 20; ++i) {
+    for (let i = 0; i < 7; ++i) {
         people.push(createPerson());
     }
 
