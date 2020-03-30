@@ -38,7 +38,8 @@ function createPerson() {
         email: faker.internet.email(),
         studentId: studentIdFromIp(),
         major: randomMajor(),
-        bio: faker.lorem.sentences(7)
+        bio: faker.lorem.sentences(7),
+        img: "https://picsum.photos/400/400"
     };
 }
 

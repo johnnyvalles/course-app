@@ -6,7 +6,8 @@ const personSchema = new mongoose.Schema({
     email: { type: String, required: true },
     studentId: { type: String, required: true },
     major: { type: String, required: true },
-    bio: { type: String, required: true }
+    bio: { type: String, required: true },
+    img: { type: String, required: true }
 });
 
 module.exports = mongoose.model("Person", personSchema);
