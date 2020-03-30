@@ -4,6 +4,8 @@ const mongoose = require("mongoose");
 const express = require("express");
 const Person = require("./models/person");
 const Assignment = require("./models/assignment");
+
+
 // ***********************************************************
 // Express Configuration
 // ***********************************************************
@@ -52,10 +54,11 @@ app.get("/students/new", (req, res) => {
 // CREATE
 app.post("/students", (req, res) => {
     Person.create(req.body.person, (err, newPerson) => {
-        if (err)
+        if (err) {
             console.log(err);
-        else
+         } else {
             res.redirect("/students");
+         }
     });
 });
 
@@ -84,20 +87,22 @@ app.get("/students/:id/edit", (req, res) => {
 // UPDATE
 app.put("/students/:id", (req, res) => {
     Person.findByIdAndUpdate(req.params.id, req.body.person, (err, updated) => {
-        if (err)
+        if (err) {
             console.log(err);
-        else
+        } else {
             res.redirect(`/students/${req.params.id}`);
+        }
     });
 });
 
 // DELETE
 app.delete("/students/:id", (req, res) => {
     Person.findByIdAndDelete(req.params.id, (err) => {
-        if (err)
+        if (err) {
             console.log(err);
-        else
+        } else {
             res.redirect("/students");
+        }
     });
 });
 // ***********************************************************
@@ -138,10 +143,11 @@ app.post("/assignments", (req, res) => {
 // SHOW
 app.get("/assignments/:id", (req, res) => {
     Assignment.findById(req.params.id, (err, doc) => {
-        if (err)
+        if (err) {
             console.log(err);
-        else
+        } else {
             res.render("assignments/show", { doc: doc });
+        }
     });
 });
 
@@ -159,20 +165,22 @@ app.get("/assignments/:id/edit", (req, res) => {
 // UPDATE
 app.put("/assignments/:id", (req, res) => {
     Assignment.findByIdAndUpdate(req.params.id, req.body.doc, (err, updated) => {
-        if (err)
+        if (err) {
             console.log(err);
-        else
+        } else {
             res.redirect(`/assignments/${req.params.id}`);
+        }
     });
 });
 
 // DELETE
 app.delete("/assignments/:id", (req, res) => {
     Assignment.findByIdAndDelete(req.params.id, (err) => {
-        if (err)
+        if (err) {
             console.log(err);
-        else
+        } else {
             res.redirect("/assignments");
+        }
     });
 });
 // ***********************************************************
