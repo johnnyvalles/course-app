@@ -2,7 +2,7 @@
 <div class="ui container">
     <h1 class="ui header">Enrolled Students</h1>
     <hr>
-    <a href="/students/new" id="create-student" class="ui primary button"><i class="add icon"></i>Enroll Student</a>
+    <a href="/students/new" id="create-student" class="ui teal button"><i class="add icon"></i>Enroll Student</a>
     <div id="student-index" class="ui grid cards">
         <% people.forEach((person) => { %>
         <div class="card">
@@ -10,7 +10,7 @@
                 <div class="header"><%= `${person.first} ${person.last}` %></div>
                 <div class="description"><%= person.bio.substring(0, 50)%>...</div>
             </div>
-            <a class="ui bottom primary attached button" href="/students/<%= person._id%>"><i class="eye icon"></i>view</a>
+            <a class="ui bottom teal attached button" href="/students/<%= person._id%>"><i class="eye icon"></i>view</a>
         </div>
         <% }) %>
     </div>
