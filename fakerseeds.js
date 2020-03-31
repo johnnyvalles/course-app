@@ -3,6 +3,9 @@ const Person = require("./models/person");
 const Assignment = require("./models/assignment");
 const faker = require("faker");
 
+const STUD_COUNT = 5,
+      HW_COUNT = 5;
+
 faker.seed(1965);
 
 const majors = [
@@ -73,11 +76,11 @@ function seedDB() {
     let people = [];
     let homeworks = [];
 
-    for (let i = 0; i < 7; ++i) {
+    for (let i = 0; i < STUD_COUNT; ++i) {
         people.push(createPerson());
     }
 
-    for (let i = 1; i < 11; ++i) {
+    for (let i = 1; i < HW_COUNT; ++i) {
         let temp = createAssignment();
         temp.name += " " + String(i);
         homeworks.push(temp);
