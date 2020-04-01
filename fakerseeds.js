@@ -56,55 +56,55 @@ function createAssignment() {
 }
 
 function seedDB() {
-
+    // Remove all People
     Person.remove({}, (err) => {
         if (err) {
             console.log(err);
         } else {
             console.log("Removed all people.");
+
+            let people = [];
+
+            for (let i = 0; i < STUD_COUNT; ++i) {
+                people.push(createPerson());
+            }
+
+            people.forEach((person) => {
+                Person.create(person, (err, createdPerson) => {
+                    if (err) {
+                        console.log(err);
+                    } else {
+                        console.log("Person added to DB.");
+                    }
+                });
+            });
         }
     });
 
+    // Remove all Assignments
     Assignment.remove({}, (err) => {
         if (err) {
             console.log(err);
         } else {
             console.log("Removed all assignments.");
+            let homeworks = [];
+
+            for (let i = 1; i < HW_COUNT; ++i) {
+                let temp = createAssignment();
+                temp.name += " " + String(i);
+                homeworks.push(temp);
+            }
+
+            homeworks.forEach((hw) => {
+                Assignment.create(hw, (err, newHw) => {
+                    if (err) {
+                        console.log(err);
+                    } else {
+                        console.log("Assignment added to DB.");
+                    }
+                })
+            });
         }
     });
-
-    let people = [];
-    let homeworks = [];
-
-    for (let i = 0; i < STUD_COUNT; ++i) {
-        people.push(createPerson());
-    }
-
-    for (let i = 1; i < HW_COUNT; ++i) {
-        let temp = createAssignment();
-        temp.name += " " + String(i);
-        homeworks.push(temp);
-    }
-
-    people.forEach((person) => {
-        Person.create(person, (err, createdPerson) => {
-            if (err) {
-                console.log(err);
-            } else {
-                console.log("Person added to DB.");
-            }
-        });
-    });
-
-    homeworks.forEach((hw) => {
-        Assignment.create(hw, (err, newHw) => {
-            if (err) {
-                console.log(err);
-            } else {
-                console.log("Assignment added to DB.");
-            }
-        })
-    });
 }
-
 module.exports = seedDB;
