@@ -8,6 +8,8 @@ const seedDB = require("./fakerseeds");
 
 const studentRoutes = require("./routes/students");
 const assignmentRoutes = require("./routes/assignments");
+const indexRoutes = require("./routes/index");
+
 
 // ***********************************************************
 // Express Configuration
@@ -20,6 +22,7 @@ app.use(methodOverride("_method"));
 app.set("view engine", "ejs");
 app.use(studentRoutes);
 app.use(assignmentRoutes);
+app.use(indexRoutes);
 // ***********************************************************
 
 
@@ -31,11 +34,6 @@ mongoose.connect('mongodb://localhost:27017/gradebook_app',
 
 seedDB();
 // ***********************************************************
-
-// Redirect ROOT to HOMEPAGE
-app.get("/", (req, res) => {
-    res.render("home");
-});
 
 let run_app = app.listen(process.env.PORT || 3000, () => {
     console.log(`Server running on localhost:${run_app.address().port}`);
