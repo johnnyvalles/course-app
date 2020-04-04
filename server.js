@@ -6,6 +6,8 @@ const Person = require("./models/person");
 const Assignment = require("./models/assignment");
 const seedDB = require("./fakerseeds");
 
+const studentRoutes = require("./routes/students");
+
 
 // ***********************************************************
 // Express Configuration
@@ -16,6 +18,7 @@ app.use(bodyParser.json());
 app.use(express.static("public"));
 app.use(methodOverride("_method"));
 app.set("view engine", "ejs");
+app.use(studentRoutes);
 // ***********************************************************
 
 
@@ -28,88 +31,10 @@ mongoose.connect('mongodb://localhost:27017/gradebook_app',
 seedDB();
 // ***********************************************************
 
-
-// ***********************************************************
-// RESTful Routes (students)
-// ***********************************************************
-
 // Redirect ROOT to HOMEPAGE
 app.get("/", (req, res) => {
     res.render("home");
 });
-
-// INDEX
-app.get("/students", (req, res) => {
-    Person.find({}, (err, people) => {
-        if (err) {
-            console.log(err);
-        } else {
-            res.render("persons/index", { people: people });
-        }
-    });
-});
-
-// NEW
-app.get("/students/new", (req, res) => {
-    res.render("persons/new");
-});
-
-// CREATE
-app.post("/students", (req, res) => {
-    Person.create(req.body.person, (err, newPerson) => {
-        if (err) {
-            console.log(err);
-         } else {
-            res.redirect("/students");
-         }
-    });
-});
-
-// SHOW
-app.get("/students/:id", (req, res) => {
-    Person.findById(req.params.id, (err, person) => {
-        if (err) {
-            console.log(err);
-        } else {
-            res.render("persons/show", { person: person });
-        }
-    });
-});
-
-// EDIT
-app.get("/students/:id/edit", (req, res) => {
-    Person.findById(req.params.id, (err, person) => {
-        if (err) {
-            console.log(err);
-        } else {
-            res.render("persons/edit", { person: person });
-        }
-    });
-});
-
-// UPDATE
-app.put("/students/:id", (req, res) => {
-    Person.findByIdAndUpdate(req.params.id, req.body.person, (err, updated) => {
-        if (err) {
-            console.log(err);
-        } else {
-            res.redirect(`/students/${req.params.id}`);
-        }
-    });
-});
-
-// DELETE
-app.delete("/students/:id", (req, res) => {
-    Person.findByIdAndDelete(req.params.id, (err) => {
-        if (err) {
-            console.log(err);
-        } else {
-            res.redirect("/students");
-        }
-    });
-});
-// ***********************************************************
-
 
 // ***********************************************************
 // RESTful Routes (assignments)
