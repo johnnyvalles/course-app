@@ -10,6 +10,20 @@ const studentRoutes = require("./routes/students");
 const assignmentRoutes = require("./routes/assignments");
 const indexRoutes = require("./routes/index");
 
+const passport = require("passport");
+const LocalStrategy = require("passport-local");
+const expressSession = require("express-session");
+
+
+// ***********************************************************
+// Mongoose Configuration
+// ***********************************************************
+mongoose.connect('mongodb://localhost:27017/gradebook_app',
+    { useNewUrlParser: true, useUnifiedTopology: true });
+
+seedDB();
+// ***********************************************************
+
 
 // ***********************************************************
 // Express Configuration
@@ -23,17 +37,18 @@ app.set("view engine", "ejs");
 app.use("/students", studentRoutes);
 app.use("/assignments", assignmentRoutes);
 app.use(indexRoutes);
+app.use(expressSession({
+    secret:"DasKopeDIIVBeachFossilsBeachHouse",
+    resave: false,
+    saveUninitialized: false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(Person.authenticate()));
+passport.serializeUser(Person.serializeUser());
+passport.deserializeUser(Person.deserializeUser());
 // ***********************************************************
 
-
-// ***********************************************************
-// Mongoose Configuration
-// ***********************************************************
-mongoose.connect('mongodb://localhost:27017/gradebook_app',
-    { useNewUrlParser: true, useUnifiedTopology: true });
-
-seedDB();
-// ***********************************************************
 
 let run_app = app.listen(process.env.PORT || 3000, () => {
     console.log(`Server running on localhost:${run_app.address().port}`);
