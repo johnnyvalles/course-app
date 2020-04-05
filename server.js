@@ -21,7 +21,7 @@ app.use(express.static("public"));
 app.use(methodOverride("_method"));
 app.set("view engine", "ejs");
 app.use("/students", studentRoutes);
-app.use(assignmentRoutes);
+app.use("/assignments", assignmentRoutes);
 app.use(indexRoutes);
 // ***********************************************************
 

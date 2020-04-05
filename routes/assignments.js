@@ -2,7 +2,7 @@ const router = require("express").Router({ mergeParams: true });
 const Assignment = require("../models/assignment");
 
 // INDEX
-router.get("/assignments", (req, res) => {
+router.get("/", (req, res) => {
     Assignment.find({}, (err, docs) => {
         if (err) {
             console.log(err);
@@ -13,7 +13,7 @@ router.get("/assignments", (req, res) => {
 });
 
 // NEW
-router.get("/assignments/new", (req, res) => {
+router.get("/new", (req, res) => {
     res.render("assignments/new");
 });
 
@@ -30,7 +30,7 @@ router.post("/assignments", (req, res) => {
 });
 
 // SHOW
-router.get("/assignments/:id", (req, res) => {
+router.get("/:id", (req, res) => {
     Assignment.findById(req.params.id, (err, doc) => {
         if (err) {
             console.log(err);
@@ -41,7 +41,7 @@ router.get("/assignments/:id", (req, res) => {
 });
 
 // EDIT
-router.get("/assignments/:id/edit", (req, res) => {
+router.get("/:id/edit", (req, res) => {
     Assignment.findById(req.params.id, (err, doc) => {
         if (err) {
             console.log(err);
@@ -52,7 +52,7 @@ router.get("/assignments/:id/edit", (req, res) => {
 });
 
 // UPDATE
-router.put("/assignments/:id", (req, res) => {
+router.put("/:id", (req, res) => {
     Assignment.findByIdAndUpdate(req.params.id, req.body.doc, (err, updated) => {
         if (err) {
             console.log(err);
@@ -63,7 +63,7 @@ router.put("/assignments/:id", (req, res) => {
 });
 
 // DELETE
-router.delete("/assignments/:id", (req, res) => {
+router.delete("/:id", (req, res) => {
     Assignment.findByIdAndDelete(req.params.id, (err) => {
         if (err) {
             console.log(err);
