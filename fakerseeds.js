@@ -25,9 +25,8 @@ const majors = [
     "Chemistry"
 ]; 
 
-function studentIdFromIp() {
-    let id = faker.internet.ip();
-    return id.split(".").join("").slice(0, 7);
+function studentIdFromPhone(phone) {
+    return phone.split("-").join("").slice(0, 7);
 }
 
 function randomMajor() {
@@ -35,14 +34,15 @@ function randomMajor() {
 }
 
 function createPerson() {
+    let card = faker.helpers.contextualCard();
     return {
-        first: faker.name.firstName(),
+        first: card.name,
         last: faker.name.lastName(),
-        email: faker.internet.email(),
-        studentId: studentIdFromIp(),
+        email: card.email,
+        studentId: studentIdFromPhone(faker.phone.phoneNumberFormat()),
         major: randomMajor(),
         bio: faker.lorem.sentences(7),
-        img: "https://picsum.photos/400/400"
+        img: card.avatar
     };
 }
 
@@ -107,4 +107,5 @@ function seedDB() {
         }
     });
 }
+
 module.exports = seedDB;
