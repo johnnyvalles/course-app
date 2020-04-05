@@ -20,7 +20,7 @@ app.use(bodyParser.json());
 app.use(express.static("public"));
 app.use(methodOverride("_method"));
 app.set("view engine", "ejs");
-app.use(studentRoutes);
+app.use("/students", studentRoutes);
 app.use(assignmentRoutes);
 app.use(indexRoutes);
 // ***********************************************************

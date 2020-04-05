@@ -2,7 +2,7 @@ const router = require("express").Router({ mergeParams: true });
 const Person = require("../models/person");
 
 // INDEX
-router.get("/students", (req, res) => {
+router.get("/", (req, res) => {
     Person.find({}, (err, people) => {
         if (err) {
             console.log(err);
@@ -13,12 +13,12 @@ router.get("/students", (req, res) => {
 });
 
 // NEW
-router.get("/students/new", (req, res) => {
+router.get("/new", (req, res) => {
     res.render("persons/new");
 });
 
 // CREATE
-router.post("/students", (req, res) => {
+router.post("/", (req, res) => {
     Person.create(req.body.person, (err, newPerson) => {
         if (err) {
             console.log(err);
@@ -29,7 +29,7 @@ router.post("/students", (req, res) => {
 });
 
 // SHOW
-router.get("/students/:id", (req, res) => {
+router.get("/:id", (req, res) => {
     Person.findById(req.params.id, (err, person) => {
         if (err) {
             console.log(err);
@@ -40,7 +40,7 @@ router.get("/students/:id", (req, res) => {
 });
 
 // EDIT
-router.get("/students/:id/edit", (req, res) => {
+router.get("/:id/edit", (req, res) => {
     Person.findById(req.params.id, (err, person) => {
         if (err) {
             console.log(err);
@@ -51,7 +51,7 @@ router.get("/students/:id/edit", (req, res) => {
 });
 
 // UPDATE
-router.put("/students/:id", (req, res) => {
+router.put("/:id", (req, res) => {
     Person.findByIdAndUpdate(req.params.id, req.body.person, (err, updated) => {
         if (err) {
             console.log(err);
@@ -62,7 +62,7 @@ router.put("/students/:id", (req, res) => {
 });
 
 // DELETE
-router.delete("/students/:id", (req, res) => {
+router.delete("/:id", (req, res) => {
     Person.findByIdAndDelete(req.params.id, (err) => {
         if (err) {
             console.log(err);
