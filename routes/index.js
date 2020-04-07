@@ -2,11 +2,11 @@ const router = require("express").Router({ mergeParams: true });
 const passport = require("passport");
 const User = require("../models/person");
 
-router.get("/", (req, res) => {
+router.get("/", isLoggedIn, (req, res) => {
     res.redirect("/home");
 });
 
-router.get("/home", (req, res) => {
+router.get("/home", isLoggedIn, (req, res) => {
     res.render("home");
 });
 
@@ -51,4 +51,10 @@ router.post("/register", (req, res) => {
     });
 });
 
+function isLoggedIn(req, res, next) {
+    if (req.isAuthenticated()) {
+        next();
+    }
+    res.redirect("/login");
+}
 module.exports = router;
