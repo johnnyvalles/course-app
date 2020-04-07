@@ -44,9 +44,13 @@ app.use(passport.session());
 passport.use(new LocalStrategy(Person.authenticate()));
 passport.serializeUser(Person.serializeUser());
 passport.deserializeUser(Person.deserializeUser());
+app.use((req, res, next) => {
+    res.locals.currentUser = req.user;
+    next();
+});
+app.use(indexRoutes);
 app.use("/students", studentRoutes);
 app.use("/assignments", assignmentRoutes);
-app.use(indexRoutes);
 // ***********************************************************
 
 

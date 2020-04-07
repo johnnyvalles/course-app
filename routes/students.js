@@ -76,7 +76,7 @@ router.delete("/:id", (req, res) => {
 
 function isLoggedIn(req, res, next) {
     if (req.isAuthenticated()) {
-        next();
+        return next();
     }
     res.redirect("/login");
 }

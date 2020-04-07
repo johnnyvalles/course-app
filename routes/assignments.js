@@ -1,8 +1,6 @@
 const router = require("express").Router({ mergeParams: true });
 const Assignment = require("../models/assignment");
 
-router.use(isLoggedIn);
-
 // INDEX
 router.get("/", (req, res) => {
     Assignment.find({}, (err, docs) => {
@@ -77,7 +75,7 @@ router.delete("/:id", (req, res) => {
 
 function isLoggedIn(req, res, next) {
     if (req.isAuthenticated()) {
-        next();
+        return next();
     }
     res.redirect("/login");
 }

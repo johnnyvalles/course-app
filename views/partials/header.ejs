@@ -11,12 +11,17 @@
     <div class="ui stackable inverted menu">
         <div class="ui container">
             <a href="/"class="item"><i class="home icon"></i>Home</a>
+            <% if (currentUser) { %>
             <a href="/students" class="item"><i class="address book icon"></i>Directory</a>
             <a href="/assignments" class="item"><i class="file alternate icon"></i>Assignments</a>
+            <% } %>
             <div class="right menu">
+                <% if (!currentUser) { %>
                 <a href="/login" class="item"><i class="sign-in icon"></i>Login</a>
                 <a href="/register" class="item"><i class="pencil alternate icon"></i>Register</a>
+                <% } else { %>
                 <a href="/logout" class="item"><i class="sign-out icon"></i>Logout</a>
+                <% } %>
             </div>
         </div>
     </div>

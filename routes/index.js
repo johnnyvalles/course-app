@@ -53,8 +53,9 @@ router.post("/register", (req, res) => {
 
 function isLoggedIn(req, res, next) {
     if (req.isAuthenticated()) {
-        next();
+        return next();
     }
     res.redirect("/login");
 }
+
 module.exports = router;
