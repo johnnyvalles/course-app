@@ -9,8 +9,8 @@ const personSchema = new mongoose.Schema({
     password: { type: String },
     studentId: { type: String, required: true },
     major: { type: String, required: true },
-    bio: { type: String, required: true },
-    img: { type: String, required: true }
+    bio: { type: String, default: "Oops! No bio provided." },
+    img: { type: String }
 });
 
 personSchema.plugin(passportLocalMongoose);

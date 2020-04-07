@@ -4,15 +4,19 @@
     <hr>
     <a href="/students/new" id="create-student" class="ui teal button"><i class="add icon"></i>Enroll Student</a>
     <div id="student-index" class="ui grid cards">
-        <% people.forEach((person) => { %>
-        <div class="card">
-            <div class="content">
-                <div class="header"><i class="user icon"></i><%= `${person.first} ${person.last}` %></div>
-                <div class="description"><%= person.bio.substring(0, 50)%>...</div>
-            </div>
-            <a class="ui bottom teal attached button" href="/students/<%= person._id%>"><i class="eye icon"></i>view</a>
-        </div>
-        <% }) %>
+        <% if (people.length > 0) { %>
+            <% people.forEach((person) => { %>
+                <div class="card">
+                    <div class="content">
+                        <div class="header"><i class="user icon"></i><%= `${person.first} ${person.last}` %></div>
+                        <div class="description"><%= person.bio.substring(0, 30)%>...</div>
+                    </div>
+                    <a class="ui bottom teal attached button" href="/students/<%= person._id%>"><i class="eye icon"></i>view</a>
+                </div>
+            <% }) %> 
+        <% } else { %>
+            <h3>No students found for this course.</h3>
+        <% } %>
     </div>
 </div>
 <%- include("../partials/footer.ejs") %>
