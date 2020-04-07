@@ -1,6 +1,8 @@
 const router = require("express").Router({ mergeParams: true });
 const Person = require("../models/person");
 
+router.use(isLoggedIn);
+
 // INDEX
 router.get("/", (req, res) => {
     Person.find({}, (err, people) => {
@@ -71,5 +73,12 @@ router.delete("/:id", (req, res) => {
         }
     });
 });
+
+function isLoggedIn(req, res, next) {
+    if (req.isAuthenticated()) {
+        next();
+    }
+    res.redirect("/login");
+}
 
 module.exports = router;
