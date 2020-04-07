@@ -30,7 +30,14 @@ router.post("/login",
 );
 
 router.post("/register", (req, res) => {
-    let newUser = new User({ username: req.body.username });
+    let newUser = new User({ 
+        first: req.body.first,
+        last: req.body.last,
+        email: req.body.email,
+        username: req.body.username,
+        studentId: req.body.studentId,
+        major: req.body.major
+    });
 
     User.register(newUser, req.body.password, (err, user) => {
         if (err) {

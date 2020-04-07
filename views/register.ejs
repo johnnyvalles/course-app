@@ -10,15 +10,30 @@
             <form action="/register" method="post" class="ui large form">
               <div class="ui stacked segment">
                 <div class="field">
+                    <input type="text" name="first" placeholder="First name" required>
+                </div>
+                <div class="field">
+                  <input type="text" name="last" placeholder="Last name" required>
+                </div>
+                <div class="field">
+                  <input type="email" name="email" placeholder="Email" required>
+                </div>
+                <div class="field">
+                  <input type="text" name="studentId" placeholder="Student ID" required>
+                </div>
+                <div class="field">
+                  <input type="text" name="major" placeholder="Major" required>
+                </div>
+                <div class="field">
                   <div class="ui left icon input">
                     <i class="user icon"></i>
-                    <input type="text" name="username" placeholder="Username">
+                    <input type="text" name="username" placeholder="Username" required>
                   </div>
                 </div>
                 <div class="field">
                   <div class="ui left icon input">
                     <i class="lock icon"></i>
-                    <input type="password" name="password" placeholder="Password">
+                    <input type="password" name="password" placeholder="Password" required>
                   </div>
                 </div>
                 <div class="field">
