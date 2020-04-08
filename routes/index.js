@@ -1,6 +1,7 @@
 const router = require("express").Router({ mergeParams: true });
 const passport = require("passport");
 const User = require("../models/person");
+const Course = require("../models/course");
 
 router.get("/", isLoggedIn, (req, res) => {
     res.redirect("/home");
@@ -49,6 +50,26 @@ router.post("/register", (req, res) => {
             res.redirect("/home");
         });
     });
+});
+
+// Courses Routes
+router.get("/courses", (req, res) => {
+    Course.find({}, (err, courses) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.render("courses/index", { courses: courses });
+        }
+    });
+});
+
+router.get("/courses/:id", (req, res) => {
+    res.send("COURSES: SHOW");
+});
+
+router.put("/courses/:id", (req, res) => {
+    // Updates the courses roster by enrolling a new student
+    res.send("COURSES: UPDATE");
 });
 
 function isLoggedIn(req, res, next) {

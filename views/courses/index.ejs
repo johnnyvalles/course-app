@@ -1,0 +1,28 @@
+<%- include("../partials/header.ejs") %>
+<div class="ui container">
+    <h1 class="ui header">All Courses</h1>
+    <hr>
+    <div id="courses-index" class="ui grid cards">
+        <% if (courses.length > 0) { %>
+            <% courses.forEach((course) => { %>
+                <div class="ui card">
+                    <div class="content">
+                      <div class="ui blue medium header"><i class="<%=course.icon%> icon"></i><%=course.name%></div>
+                      <div class="meta right floated"><i class="user icon"></i>124 Enrolled</div>
+                    </div>
+                    <div class="content">
+                    <h4 class="ui header">Course Objectives</h4>
+                    <div class="description"><%=course.description.substring(0, 50)%><a href="#"> Read More...</a>
+                    </div>
+                    </div>
+                    <div class="extra content">
+                      <button class="ui blue fluid button">Enroll Now</button>
+                    </div>
+                </div>
+            <% }) %> 
+        <% } else { %>
+            <h3>No courses are currently available.</h3>
+        <% } %>
+    </div>
+</div>
+<%- include("../partials/footer.ejs") %>
