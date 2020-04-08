@@ -1,10 +1,10 @@
 const mongoose = require("mongoose");
-const Person = require("./models/person");
 const Course = require("./models/course");
+const Student = require("./models/person");
 const Assignment = require("./models/assignment");
 const faker = require("faker");
 
-const STUD_COUNT = 5,
+const STUD_COUNT = 3,
       HW_COUNT = 5;
 
 faker.seed(1965);
@@ -42,17 +42,19 @@ function randomMajor() {
     return majors[Math.floor(Math.random() * 14)]; // returns a random integer from 0 to 13 ]
 }
 
-function createPerson() {
+function createStudent() {
     let card = faker.helpers.contextualCard();
-    return {
+    let user = {
         first: card.name,
         last: faker.name.lastName(),
         email: card.email,
         studentId: studentIdFromPhone(faker.phone.phoneNumberFormat()),
         major: randomMajor(),
         bio: faker.lorem.sentences(7),
-        img: card.avatar
+        img: card.avatar,
     };
+    user.username = (user.first + user.last).toLowerCase();
+    return user;
 }
 
 function createAssignment() {
@@ -76,7 +78,7 @@ function createCourse(lang, icon) {
 
 function seedDB() {
     // Remove all People
-    Person.remove({}, (err) => {
+    Student.remove({}, (err) => {
         if (err) {
             console.log(err);
         } else {
@@ -85,15 +87,15 @@ function seedDB() {
             let people = [];
 
             for (let i = 0; i < STUD_COUNT; ++i) {
-                people.push(createPerson());
+                people.push(createStudent());
             }
 
             people.forEach((person) => {
-                Person.create(person, (err, createdPerson) => {
+                Student.register(person, "password", (err, user) => {
                     if (err) {
                         console.log(err);
                     } else {
-                        console.log("Person added to DB.");
+                        console.log("Registered " + person.username);
                     }
                 });
             });
