@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Person = require("./models/person");
+const Course = require("./models/course");
 const Assignment = require("./models/assignment");
 const faker = require("faker");
 
@@ -24,6 +25,14 @@ const majors = [
     "Psychology",
     "Chemistry"
 ]; 
+
+const langs = {
+    "HTML5": "html5",
+    "JavaScript": "js square",
+    "CSS3": "css3 alternate",
+    "Git": "git square",
+    "Python": "python"
+};
 
 function studentIdFromPhone(phone) {
     return phone.split("-").join("").slice(0, 7);
@@ -52,6 +61,16 @@ function createAssignment() {
         points: "100",
         released: faker.date.month() + " " + (Math.floor(Math.random() * 22) + 1),
         due: faker.date.month() + " " + (Math.floor(Math.random() * 22) + 1)
+    };
+}
+
+function createCourse(lang, icon) {
+    return {
+        name: `Learn ${lang}`,
+        instructor: `${faker.name.firstName()} ${faker.name.lastName()}`,
+        subject: lang,
+        icon: icon, 
+        description: faker.lorem.sentences(4)
     };
 }
 
@@ -106,6 +125,25 @@ function seedDB() {
             });
         }
     });
+
+    // Remove all Courses
+    Course.remove({}, (err) => {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log("Removed all courses.");
+            for (let lang in langs) {
+                Course.create(createCourse(lang, langs[lang]), (err, newCourse) => {
+                    if (err) {
+                        console.log(err);
+                    } else {
+                        console.log("Course added to DB.")
+                    }
+                });
+            }
+        }
+    });
+    
 }
 
 module.exports = seedDB;
