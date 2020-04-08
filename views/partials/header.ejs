@@ -12,8 +12,8 @@
         <div class="ui container">
             <a href="/"class="item"><i class="home icon"></i>Home</a>
             <% if (currentUser) { %>
+            <a href="/courses" class="item"><i class="graduation hat icon"></i>Courses</a>
             <a href="/students" class="item"><i class="address book icon"></i>Directory</a>
-            <a href="/assignments" class="item"><i class="file alternate icon"></i>Assignments</a>
             <% } %>
             <div class="right menu">
                 <% if (!currentUser) { %>
