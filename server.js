@@ -21,7 +21,7 @@ const expressSession = require("express-session");
 mongoose.connect('mongodb://localhost:27017/learnvas',
     { useNewUrlParser: true, useUnifiedTopology: true });
 
-// seedDB();
+seedDB();
 // ***********************************************************
 
 
