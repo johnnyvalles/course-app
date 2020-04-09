@@ -1,20 +1,22 @@
 const router = require("express").Router({ mergeParams: true });
 const Assignment = require("../models/assignment");
 
+router.use(isLoggedIn);
 // INDEX
 router.get("/", (req, res) => {
     Assignment.find({}, (err, docs) => {
         if (err) {
             console.log(err);
         } else {
-            res.render("assignments/index", { docs: docs });
+            res.render("assignments/index", { docs: docs, courseId: req.params.cid });
         }
     });
 });
 
 // NEW
 router.get("/new", (req, res) => {
-    res.render("assignments/new");
+    console.log("CID: " + req.params.cid);
+    res.render("assignments/new", { courseId: req.params.cid });
 });
 
 // CREATE
