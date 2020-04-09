@@ -7,6 +7,7 @@ const Assignment = require("./models/assignment");
 const seedDB = require("./fakerseeds");
 
 const studentRoutes = require("./routes/students");
+const courseRoutes = require("./routes/courses");
 const assignmentRoutes = require("./routes/assignments");
 const indexRoutes = require("./routes/index");
 
@@ -50,6 +51,7 @@ app.use((req, res, next) => {
 });
 app.use(indexRoutes);
 app.use("/students", studentRoutes);
+app.use("/courses", courseRoutes);
 app.use("/assignments", assignmentRoutes);
 // ***********************************************************
 
