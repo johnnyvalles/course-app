@@ -13,10 +13,12 @@
                 <p><i class="tag icon"></i><%= person.studentId %></p>
                 <p><i class="book icon"></i><%= person.major %></p>
                 <p><i class="smile icon"></i><%= person.bio %></p>
+                <%if (currentUser.username === person.username) {%>
                 <form action="/students/<%= person._id%>?_method=DELETE" method="POST">
-                    <a href="/students/<%= person._id %>/edit" class="ui blue basic button">Edit</a>
-                    <input type="submit" value="Drop" class="ui red basic button">
+                    <a href="/students/<%= person._id %>/edit" class="ui blue basic button">Update Profile</a>
+                    <input type="submit" value="Delete Profile" class="ui red basic button">
                 </form>
+                <%}%>
             </div>
         </div>
     </div>
