@@ -1,7 +1,7 @@
 const router = require("express").Router({ mergeParams: true });
 const Assignment = require("../models/assignment");
-
 router.use(isLoggedIn);
+
 // INDEX
 router.get("/", (req, res) => {
     Assignment.find({}, (err, docs) => {
@@ -15,7 +15,6 @@ router.get("/", (req, res) => {
 
 // NEW
 router.get("/new", (req, res) => {
-    console.log("CID: " + req.params.cid);
     res.render("assignments/new", { courseId: req.params.cid });
 });
 
@@ -37,7 +36,7 @@ router.get("/:id", (req, res) => {
         if (err) {
             console.log(err);
         } else {
-            res.render("assignments/show", { doc: doc });
+            res.render("assignments/show", { doc: doc, courseId: req.params.cid });
         }
     });
 });
@@ -48,7 +47,7 @@ router.get("/:id/edit", (req, res) => {
         if (err) {
             console.log(err);
         } else {
-            res.render("assignments/edit", { doc: doc });
+            res.render("assignments/edit", { doc: doc, courseId: req.params.cid });
         }
     });
 });
@@ -59,7 +58,7 @@ router.put("/:id", (req, res) => {
         if (err) {
             console.log(err);
         } else {
-            res.redirect(`/assignments/${req.params.id}`);
+            res.redirect(`/courses/${req.params.cid}/assignments/${req.params.id}`);
         }
     });
 });
@@ -70,7 +69,7 @@ router.delete("/:id", (req, res) => {
         if (err) {
             console.log(err);
         } else {
-            res.redirect("/assignments");
+            res.redirect(`/courses/${req.params.cid}/assignments`);
         }
     });
 });

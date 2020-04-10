@@ -52,7 +52,7 @@ app.use((req, res, next) => {
 app.use(indexRoutes);
 app.use("/students", studentRoutes);
 app.use("/courses", courseRoutes);
-app.use("/assignments", assignmentRoutes);
+app.use("/courses/:cid/assignments", assignmentRoutes);
 // ***********************************************************
 
 

@@ -2,7 +2,7 @@
 <div class="ui container">
     <h1 class="ui header">Edit Assignment</h1>
     <hr>
-    <form action="/assignments/<%= doc._id %>?_method=PUT" method="POST" class="ui form">
+    <form action="/courses/<%=courseId%>/assignments/<%= doc._id %>?_method=PUT" method="POST" class="ui form">
         <div class="fields">
           <div class="field">
             <label>Name</label>
@@ -22,7 +22,7 @@
             <input type="text" placeholder="Due Date" value="<%= doc.due %>" name="doc[due]" required>
         </div>
         <input type="submit" value="Save" class="ui green button">
-        <a href="/assignments/<%=doc._id%>" class="ui red button">Cancel</a> 
+        <a href="/courses/<%=courseId%>/assignments/<%=doc._id%>" class="ui red button">Cancel</a> 
     </form>
 </div>
 <%- include("../partials/footer.ejs") %>
