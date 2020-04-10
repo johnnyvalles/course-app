@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const passportLocalMongoose = require("passport-local-mongoose");
 
-const personSchema = new mongoose.Schema({
+const studentSchema = new mongoose.Schema({
     first: { type: String, required: true },
     last: { type: String, required: true },
     email: { type: String, required: true },
@@ -13,6 +13,6 @@ const personSchema = new mongoose.Schema({
     img: { type: String }
 });
 
-personSchema.plugin(passportLocalMongoose);
+studentSchema.plugin(passportLocalMongoose);
 
-module.exports = mongoose.model("Person", personSchema);
+module.exports = mongoose.model("Student", studentSchema);

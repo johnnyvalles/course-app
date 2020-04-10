@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const Course = require("./models/course");
-const Student = require("./models/person");
+const Student = require("./models/student");
 const Assignment = require("./models/assignment");
 const faker = require("faker");
 
@@ -44,7 +44,7 @@ function randomMajor() {
 
 function createStudent() {
     let card = faker.helpers.contextualCard();
-    let user = {
+    let student = {
         first: card.name,
         last: faker.name.lastName(),
         email: card.email,
@@ -53,8 +53,8 @@ function createStudent() {
         bio: faker.lorem.sentences(7),
         img: card.avatar,
     };
-    user.username = (user.first + user.last).toLowerCase();
-    return user;
+    student.username = (student.first + student.last).toLowerCase();
+    return student;
 }
 
 function createAssignment() {
@@ -82,20 +82,20 @@ function seedDB() {
         if (err) {
             console.log(err);
         } else {
-            console.log("Removed all people.");
+            console.log("Removed all students.");
 
-            let people = [];
+            let students = [];
 
             for (let i = 0; i < STUD_COUNT; ++i) {
-                people.push(createStudent());
+                students.push(createStudent());
             }
 
-            people.forEach((person) => {
-                Student.register(person, "password", (err, user) => {
+            students.forEach((student) => {
+                Student.register(student, "password", (err, student) => {
                     if (err) {
                         console.log(err);
                     } else {
-                        console.log("Registered " + person.username);
+                        console.log("Registered " + student.username);
                     }
                 });
             });

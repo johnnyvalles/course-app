@@ -2,7 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const methodOverride = require("method-override");
-const Person = require("./models/person");
+const Student = require("./models/student");
 const Assignment = require("./models/assignment");
 const seedDB = require("./seeds");
 
@@ -42,9 +42,9 @@ app.use(expressSession({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
-passport.use(new LocalStrategy(Person.authenticate()));
-passport.serializeUser(Person.serializeUser());
-passport.deserializeUser(Person.deserializeUser());
+passport.use(new LocalStrategy(Student.authenticate()));
+passport.serializeUser(Student.serializeUser());
+passport.deserializeUser(Student.deserializeUser());
 app.use((req, res, next) => {
     res.locals.currentUser = req.user;
     next();

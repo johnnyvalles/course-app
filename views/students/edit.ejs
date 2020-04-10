@@ -1,0 +1,40 @@
+<%- include("../partials/header.ejs") %>
+<div class="ui container">
+    <h1 class="ui header">Edit Student Information</h1>
+    <hr>
+    <form action="/students/<%= student._id %>?_method=PUT" method="POST" class="ui form">
+        <div class="fields">
+          <div class="field">
+            <label>First name</label>
+            <input type="text" placeholder="First Name" value="<%= student.first %>" name="student[first]" required>
+          </div>
+          <div class="field">
+            <label>Last name</label>
+            <input type="text" placeholder="Last Name" value="<%= student.last %>" name="student[last]" required>
+          </div>
+        </div>
+        <div class="field">
+          <label>Avatar</label>
+          <input type="text" placeholder="Image URL" value="<%= student.img %>" name="student[img]" required>
+        </div>
+        <div class="field">
+            <label>Email</label>
+            <input type="email" placeholder="Email" value="<%= student.email %>" name="student[email]" required>
+        </div>
+        <div class="field">
+            <label>Major</label>
+            <input type="text" placeholder="Major" value="<%= student.major %>" name="student[major]" required>
+        </div>
+        <div class="field">
+          <label>Student ID</label>
+          <input type="text" placeholder="Student ID" value="<%= student.studentId %>" name="student[studentId]" minlength="7" maxlength="7" required>
+      </div>
+        <div class="field">
+            <label>Short Bio</label>
+            <textarea rows="2" name="student[bio]"><%= student.bio %></textarea>
+        </div>
+        <input type="submit" value="Save" class="ui green button">
+        <a href="/students/<%=student._id%>" class="ui red button">Cancel</a> 
+    </form>
+</div>
+<%- include("../partials/footer.ejs") %>

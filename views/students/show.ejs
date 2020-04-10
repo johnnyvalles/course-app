@@ -1,0 +1,26 @@
+<%- include("../partials/header.ejs") %>
+<div class="ui container">
+    <h1 class="ui header">Student Information</h1>
+    <hr>
+    <div class="ui segment">
+        <div class="ui grid stackable">
+            <div class="four wide column">
+                <img class="ui rounded image" src="<%=student.img%>">
+            </div>
+            <div class="twelve wide column">
+                <h2><i class="user icon"></i><%= `${student.first} ${student.last}` %></h2>
+                <p><i class="envelope icon"></i><%= student.email %></p>
+                <p><i class="tag icon"></i><%= student.studentId %></p>
+                <p><i class="book icon"></i><%= student.major %></p>
+                <p><i class="smile icon"></i><%= student.bio %></p>
+                <%if (currentUser.username === student.username) {%>
+                <form action="/students/<%= student._id%>?_method=DELETE" method="POST">
+                    <a href="/students/<%= student._id %>/edit" class="ui blue basic button">Update Profile</a>
+                    <input type="submit" value="Delete Profile" class="ui red basic button">
+                </form>
+                <%}%>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include("../partials/footer.ejs") %>

@@ -1,27 +1,27 @@
 const router = require("express").Router({ mergeParams: true });
-const Person = require("../models/person");
+const Student = require("../models/student");
 
 router.use(isLoggedIn);
 
 // INDEX
 router.get("/", (req, res) => {
-    Person.find({}, (err, people) => {
+    Student.find({}, (err, students) => {
         if (err) {
             console.log(err);
         } else {
-            res.render("persons/index", { people: people });
+            res.render("students/index", { students: students });
         }
     });
 });
 
 // NEW
 router.get("/new", (req, res) => {
-    res.render("persons/new");
+    res.render("students/new");
 });
 
 // CREATE
 router.post("/", (req, res) => {
-    Person.create(req.body.person, (err, newPerson) => {
+    Student.create(req.body.student, (err, newStudent) => {
         if (err) {
             console.log(err);
          } else {
@@ -32,29 +32,29 @@ router.post("/", (req, res) => {
 
 // SHOW
 router.get("/:id", (req, res) => {
-    Person.findById(req.params.id, (err, person) => {
+    Student.findById(req.params.id, (err, student) => {
         if (err) {
             console.log(err);
         } else {
-            res.render("persons/show", { person: person });
+            res.render("students/show", { student: student });
         }
     });
 });
 
 // EDIT
 router.get("/:id/edit", (req, res) => {
-    Person.findById(req.params.id, (err, person) => {
+    Student.findById(req.params.id, (err, student) => {
         if (err) {
             console.log(err);
         } else {
-            res.render("persons/edit", { person: person });
+            res.render("students/edit", { student: student });
         }
     });
 });
 
 // UPDATE
 router.put("/:id", (req, res) => {
-    Person.findByIdAndUpdate(req.params.id, req.body.person, (err, updated) => {
+    Student.findByIdAndUpdate(req.params.id, req.body.student, (err, updated) => {
         if (err) {
             console.log(err);
         } else {
@@ -65,7 +65,7 @@ router.put("/:id", (req, res) => {
 
 // DELETE
 router.delete("/:id", (req, res) => {
-    Person.findByIdAndDelete(req.params.id, (err) => {
+    Student.findByIdAndDelete(req.params.id, (err) => {
         if (err) {
             console.log(err);
         } else {

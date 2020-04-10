@@ -3,14 +3,14 @@
     <h1 class="ui header">Enrolled Students</h1>
     <hr>
     <div id="student-index" class="ui grid cards">
-        <% if (people.length > 0) { %>
-            <% people.forEach((person) => { %>
+        <% if (students.length > 0) { %>
+            <% students.forEach((student) => { %>
                 <div class="card">
                     <div class="content">
-                        <div class="header"><i class="user icon"></i><%= `${person.first} ${person.last}` %></div>
-                        <div class="description"><%= person.bio.substring(0, 30)%>...</div>
+                        <div class="header"><i class="user icon"></i><%= `${student.first} ${student.last}` %></div>
+                        <div class="description"><%= student.bio.substring(0, 30)%>...</div>
                     </div>
-                    <a class="ui bottom teal attached button" href="/students/<%= person._id%>"><i class="eye icon"></i>view</a>
+                    <a class="ui bottom teal attached button" href="/students/<%= student._id%>"><i class="eye icon"></i>view</a>
                 </div>
             <% }) %> 
         <% } else { %>

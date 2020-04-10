@@ -1,6 +1,6 @@
 const router = require("express").Router({ mergeParams: true });
 const passport = require("passport");
-const User = require("../models/person");
+const Student = require("../models/student");
 const Course = require("../models/course");
 
 router.get("/", isLoggedIn, (req, res) => {
@@ -31,7 +31,7 @@ router.post("/login",
 );
 
 router.post("/register", (req, res) => {
-    let newUser = new User({ 
+    let newStudent = new Student({ 
         first: req.body.first,
         last: req.body.last,
         email: req.body.email,
@@ -40,7 +40,7 @@ router.post("/register", (req, res) => {
         major: req.body.major
     });
 
-    User.register(newUser, req.body.password, (err, user) => {
+    Student.register(newStudent, req.body.password, (err, user) => {
         if (err) {
             console.log(err);
             return res.render("register");
