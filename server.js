@@ -4,7 +4,7 @@ const bodyParser = require("body-parser");
 const methodOverride = require("method-override");
 const Person = require("./models/person");
 const Assignment = require("./models/assignment");
-const seedDB = require("./fakerseeds");
+const seedDB = require("./seeds");
 
 const studentRoutes = require("./routes/students");
 const courseRoutes = require("./routes/courses");
