@@ -1,0 +1,19 @@
+<%- include("../partials/header.ejs") %>
+<div class="ui container">
+    <h1 class="ui header">Course Information</h1>
+    <hr>
+    <div class="ui segment">
+        <div class="ui grid stackable">
+            <div class="twelve wide column">
+                <h2><i class="<%=course.icon%> icon"></i><%= course.name %></h2>
+                <p><i class="user icon"></i>Taught by <%= course.instructor %></p>
+                <p><i class="question icon"></i>Course Objectives: <%= course.description %></p>
+                <form>
+                    <a href="/courses/<%=course._id%>/assignments" class="ui green basic button">View Assignments</a>
+                    <input type="submit" value="Enroll Now" class="ui primary basic button">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include("../partials/footer.ejs") %>
