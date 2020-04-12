@@ -78,7 +78,7 @@ function createCourse(lang, icon) {
 
 function seedDB() {
     // Remove all People
-    Student.remove({}, (err) => {
+    Student.deleteMany({}, (err) => {
         if (err) {
             console.log(err);
         } else {
@@ -103,7 +103,7 @@ function seedDB() {
     });
 
     // Remove all Assignments
-    Assignment.remove({}, (err) => {
+    Assignment.deleteMany({}, (err) => {
         if (err) {
             console.log(err);
         } else {
@@ -129,7 +129,7 @@ function seedDB() {
     });
 
     // Remove all Courses
-    Course.remove({}, (err) => {
+    Course.deleteMany({}, (err) => {
         if (err) {
             console.log(err);
         } else {
