@@ -1,7 +1,7 @@
 {
-  "name": "gradebook",
+  "name": "learnvas",
   "version": "1.0.0",
-  "description": "A RESTful gradebook app.",
+  "description": "A learning platform for computer science students.",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
