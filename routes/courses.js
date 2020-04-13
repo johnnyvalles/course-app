@@ -14,6 +14,10 @@ router.get("/", (req, res) => {
     });
 });
 
+router.post("/:id", isLoggedIn, (req, res) => {
+    res.send("COURSE ENROLLMENT");
+});
+
 router.get("/:id", (req, res) => {
     Course.findById(req.params.id, (err, course) => {
         if (err) {
