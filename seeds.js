@@ -28,10 +28,10 @@ const majors = [
 
 const langs = {
     "HTML5": "html5",
-    "JavaScript": "js square",
-    "CSS3": "css3 alternate",
-    "Git": "git square",
-    "Python": "python"
+    // "JavaScript": "js square",
+    // "CSS3": "css3 alternate",
+    // "Git": "git square",
+    // "Python": "python"
 };
 
 function studentIdFromPhone(phone) {
@@ -102,31 +102,31 @@ function seedDB() {
         }
     });
 
-    // Remove all Assignments
-    Assignment.deleteMany({}, (err) => {
-        if (err) {
-            console.log(err);
-        } else {
-            console.log("Removed all assignments.");
-            let homeworks = [];
+    // // Remove all Assignments
+    // Assignment.deleteMany({}, (err) => {
+    //     if (err) {
+    //         console.log(err);
+    //     } else {
+    //         console.log("Removed all assignments.");
+    //         let homeworks = [];
 
-            for (let i = 1; i < HW_COUNT; ++i) {
-                let temp = createAssignment();
-                temp.name += " " + String(i);
-                homeworks.push(temp);
-            }
+    //         for (let i = 1; i < HW_COUNT; ++i) {
+    //             let temp = createAssignment();
+    //             temp.name += " " + String(i);
+    //             homeworks.push(temp);
+    //         }
 
-            homeworks.forEach((hw) => {
-                Assignment.create(hw, (err, newHw) => {
-                    if (err) {
-                        console.log(err);
-                    } else {
-                        console.log("Assignment added to DB.");
-                    }
-                })
-            });
-        }
-    });
+    //         homeworks.forEach((hw) => {
+    //             Assignment.create(hw, (err, newHw) => {
+    //                 if (err) {
+    //                     console.log(err);
+    //                 } else {
+    //                     console.log("Assignment added to DB.");
+    //                 }
+    //             })
+    //         });
+    //     }
+    // });
 
     // Remove all Courses
     Course.deleteMany({}, (err) => {
@@ -145,7 +145,6 @@ function seedDB() {
             }
         }
     });
-    
 }
 
 module.exports = seedDB;
