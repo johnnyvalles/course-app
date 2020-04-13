@@ -8,7 +8,11 @@ const instructorSchema = new mongoose.Schema({
     username: { type: String, required: true },
     password: { type: String },
     bio: { type: String, default: "Oops! No bio provided." },
-    img: { type: String, default: "https://img.icons8.com/plasticine/100/000000/broken-robot.png" }
+    img: { type: String, default: "https://img.icons8.com/plasticine/100/000000/broken-robot.png" }, 
+    courses: [{ 
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: "Courses"
+    }]
 });
 
 instructorSchema.plugin(passportLocalMongoose);
