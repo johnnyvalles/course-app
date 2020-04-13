@@ -7,10 +7,9 @@ const studentSchema = new mongoose.Schema({
     email: { type: String, required: true },
     username: { type: String },
     password: { type: String },
-    studentId: { type: String, required: true },
-    major: { type: String, required: true },
+    major: { type: String, default: "Oops! No major provided." },
     bio: { type: String, default: "Oops! No bio provided." },
-    img: { type: String }
+    img: { type: String, default: "https://img.icons8.com/plasticine/100/000000/broken-robot.png" }
 });
 
 studentSchema.plugin(passportLocalMongoose);
