@@ -40,6 +40,10 @@ router.post("/register", (req, res) => {
         major: req.body.major
     });
 
+    if (!newStudent.major) {
+        newStudent.major = undefined;
+    }
+
     Student.register(newStudent, req.body.password, (err, user) => {
         if (err) {
             console.log(err);
