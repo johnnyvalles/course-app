@@ -10,7 +10,6 @@
             <div class="twelve wide column">
                 <h2><i class="user icon"></i><%= `${student.first} ${student.last}` %></h2>
                 <p><i class="envelope icon"></i><%= student.email %></p>
-                <p><i class="tag icon"></i><%= student.studentId %></p>
                 <p><i class="book icon"></i><%= student.major %></p>
                 <p><i class="smile icon"></i><%= student.bio %></p>
                 <%if (currentUser.username === student.username) {%>
