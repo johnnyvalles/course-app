@@ -47,6 +47,7 @@ passport.serializeUser(Student.serializeUser());
 passport.deserializeUser(Student.deserializeUser());
 app.use((req, res, next) => {
     res.locals.currentUser = req.user;
+    res.locals.userEnrolled = false;
     next();
 });
 app.use(indexRoutes);
