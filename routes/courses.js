@@ -1,5 +1,6 @@
 const router = require("express").Router({ mergeParams: true });
 const Course = require("../models/course");
+const Student = require("../models/student");
 
 router.use(isLoggedIn);
 
@@ -14,8 +15,24 @@ router.get("/", (req, res) => {
     });
 });
 
-router.post("/:id", isLoggedIn, (req, res) => {
-    res.send("COURSE ENROLLMENT");
+router.post("/:cid/enroll/:sid", isLoggedIn, (req, res) => {
+    Course.findById(req.params.cid, (err, course) => {
+        if (err) {
+            console.log(err);
+        } else {
+            Student.findById(req.params.sid, (err, student) => {
+                if (err) {
+                    console.log(err);
+                } else {
+                    course.students.push(student);
+                    student.courses.push(course);
+                    course.save();
+                    student.save();
+                    res.redirect(`/courses/${req.params.cid}`);
+                }
+            });
+        }
+    });
 });
 
 router.get("/:id", (req, res) => {
@@ -26,11 +43,6 @@ router.get("/:id", (req, res) => {
             res.render("courses/show", { course: course });
         }
     });
-});
-
-router.put("/:id", (req, res) => {
-    // Updates the courses roster by enrolling a new student
-    res.send("COURSES: UPDATE");
 });
 
 function isLoggedIn(req, res, next) {
