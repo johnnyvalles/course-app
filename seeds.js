@@ -10,7 +10,8 @@ const STUD_COUNT = 3,
 faker.seed(1965);
 
 const majors = [
-    "Computer Science", 
+    "Computer Science",
+    "Computer Science & Engineering", 
     "Computer Engineering",
     "Software Engineering",
     "Electrical Engineering",
