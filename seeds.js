@@ -31,7 +31,7 @@ function studentIdFromPhone(phone) {
 }
 
 function randomMajor() {
-    return majors[Math.floor(Math.random() * 14)]; // returns a random integer from 0 to 13 ]
+    return majors[Math.floor(Math.random() * majors.length)]; // Returns a random major
 }
 
 function createStudent() {
