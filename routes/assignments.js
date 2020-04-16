@@ -1,11 +1,12 @@
 const router = require("express").Router({ mergeParams: true });
 const Assignment = require("../models/assignment");
 const Course = require("../models/course");
+
+// MIDDLEWARE
 router.use(isLoggedIn);
 
 // INDEX
 router.get("/", (req, res) => {
-
     Course.findById(req.params.cid, (err, course) => {
         if (err) {
             console.log(err);
