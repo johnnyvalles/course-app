@@ -20,10 +20,10 @@ const majors = [
 
 const langs = {
     "HTML5": "html5",
-    // "JavaScript": "js square",
-    // "CSS3": "css3 alternate",
-    // "Git": "git square",
-    // "Python": "python"
+    "JavaScript": "js square",
+    "CSS3": "css3 alternate",
+    "Git": "git square",
+    "Python": "python"
 };
 
 function studentIdFromPhone(phone) {
