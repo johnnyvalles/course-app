@@ -12,18 +12,10 @@ faker.seed(1965);
 const majors = [
     "Computer Science", 
     "Computer Engineering",
-    "Civil Engineering",
-    "Public Health",
-    "Political Science",
     "Software Engineering",
+    "Electrical Engineering",
+    "Computer Game Science",
     "Informatics",
-    "Bio Informatics",
-    "Physics",
-    "History", 
-    "Geology", 
-    "Sociology",
-    "Psychology",
-    "Chemistry"
 ]; 
 
 const langs = {
