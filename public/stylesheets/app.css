@@ -1,3 +1,7 @@
 #create-student {
     margin-bottom: 1em;
 }
+
+#student-index, #course-index {
+    padding: 2em 0em;
+}
