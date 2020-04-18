@@ -4,11 +4,11 @@ const Student = require("../models/student");
 const Course = require("../models/course");
 
 router.get("/", isLoggedIn, (req, res) => {
-    res.redirect("/home");
+    res.render("dashboard");
 });
 
 router.get("/home", isLoggedIn, (req, res) => {
-    res.render("home");
+    res.redirect("/");
 });
 
 // Auth Routes
