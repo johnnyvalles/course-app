@@ -1,7 +1,6 @@
 <%- include("../partials/header.ejs") %>
 <div class="ui container">
-    <h1 class="ui header">Edit Student Information</h1>
-    <hr>
+    <h1 class="info-header">Edit Student Information</h1>
     <form action="/students/<%= student._id %>?_method=PUT" method="POST" class="ui form">
         <div class="fields">
           <div class="field">

@@ -2,6 +2,11 @@
     margin-bottom: 1em;
 }
 
-#student-index, #course-index {
-    padding: 2em 0em;
+#course-index, #student-index {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.info-header {
+    border-bottom: 3px solid black;
 }
