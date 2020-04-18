@@ -1,40 +1,42 @@
 <%- include("./partials/header.ejs") %>
 <div class="ui container">
-    <div class="ui segment black segment">
-        <h1><i class="graduation hat icon"></i> Welcome <%=currentUser.first%> <%=currentUser.last%>!</h1>
-    </div>
-    <div class="ui segments red segment">
-        <div class="ui segment">
-            <h2><i class="bullhorn icon"></i> Announcements</h2>
+    <div id="dashboard-index">
+        <div class="ui segment black segment">
+            <h1><i class="graduation hat icon"></i> Welcome <%=currentUser.first%> <%=currentUser.last%>!</h1>
         </div>
-        <div class="ui segments">
+        <div class="ui segments red segment">
             <div class="ui segment">
-                <p>Welcome to the CS101!</p>
-                <a href="#" class="medium ui button red">View</a>
+                <h2><i class="bullhorn icon"></i> Announcements</h2>
             </div>
-            <div class="ui segment">
-                <p>Getting started tutorial</p>
-                <a href="#" class="medium ui button red">View</a>
-            </div>
-            <div class="ui segment">
-                <p>Please review the Syllabus!!</p>
-                <a href="#" class="medium ui button red">View</a>
+            <div class="ui segments">
+                <div class="ui segment">
+                    <p>Welcome to the CS101!</p>
+                    <a href="#" class="medium ui button red">View</a>
+                </div>
+                <div class="ui segment">
+                    <p>Getting started tutorial</p>
+                    <a href="#" class="medium ui button red">View</a>
+                </div>
+                <div class="ui segment">
+                    <p>Please review the Syllabus!!</p>
+                    <a href="#" class="medium ui button red">View</a>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="ui segments green segment">
-        <div class="ui segment">
-            <h2><i class="question icon"></i> Learnvas Links</h2>
-        </div>
-        <div class="ui segments">
+        <div class="ui segments green segment">
             <div class="ui segment">
-                <a href="/students">Student Directory <i class="arrow alternate circle right icon"></i></a>
+                <h2><i class="question icon"></i> Learnvas Links</h2>
             </div>
-            <div class="ui segment">
-                <a href="/courses">All Courses <i class="arrow alternate circle right icon"></i></a>
-            </div>
-            <div class="ui segment">
-                <a href="/students/<%=currentUser._id%>">Your Profile <i class="arrow alternate circle right icon"></i></a>
+            <div class="ui segments">
+                <div class="ui segment">
+                    <a href="/students">Student Directory <i class="arrow alternate circle right icon"></i></a>
+                </div>
+                <div class="ui segment">
+                    <a href="/courses">All Courses <i class="arrow alternate circle right icon"></i></a>
+                </div>
+                <div class="ui segment">
+                    <a href="/students/<%=currentUser._id%>">Your Profile <i class="arrow alternate circle right icon"></i></a>
+                </div>
             </div>
         </div>
     </div>

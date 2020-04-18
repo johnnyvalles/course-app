@@ -2,9 +2,9 @@
     margin-bottom: 1em;
 }
 
-#course-index, #student-index {
+#course-index, #student-index, #dashboard-index {
     margin-top: 1em;
-    margin-bottom: 1em;
+    margin-bottom: 2em;
 }
 
 .info-header {
