@@ -37,11 +37,35 @@ router.post("/register", (req, res) => {
         email: req.body.email,
         username: req.body.username,
         studentId: req.body.studentId,
-        major: req.body.major
     });
 
-    if (!newStudent.major) {
-        newStudent.major = undefined;
+    switch (req.body.major.toLowerCase()) {
+        case "cs":
+            newStudent.major = "Computer Science";
+        break;
+        case "cse":
+            newStudent.major = "Computer Science & Engineer";
+        break;
+        case "ce":
+            newStudent.major = "Computer Engineering";
+        break;
+        case "ele":
+            newStudent.major = "Electrical Engineering";
+        break;
+        case "se":
+            newStudent.major = "Software Engineering";
+        break;
+        case "cgs":
+            newStudent.major = "Computer Game Science";
+        case "inf":
+            newStudent.major = "Informatics";
+        break;
+        case "oth":
+            newStudent.major = "Other";
+        break;
+        default:
+            newStudent.major = undefined; // Set to undefined for db default.
+        break;
     }
 
     Student.register(newStudent, req.body.password, (err, user) => {
