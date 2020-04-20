@@ -17,7 +17,10 @@
                     </div>
                     <div class="extra content">
                         <form action="/courses/<%=course._id%>/enroll/<%=currentUser._id%>" method="POST">
-                            <input type="submit" value="Enroll Now" class="ui blue fluid button">
+                            <div class="ui two buttons">
+                                <input type="submit" value="Enroll Now" class="ui blue button">
+                                <a href="/courses/<%=course._id%>" class="ui basic blue button">Learn More</a>
+                            </div>
                         </form>
                     </div>
                 </div>
