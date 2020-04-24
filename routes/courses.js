@@ -27,7 +27,7 @@ router.post("/:cid/enroll/:sid", isLoggedIn, (req, res) => {
 
                     // Check if student has course
                     if (student.courses.indexOf(course._id) !== -1) {
-                        console.log(`Student(${student._id}) already enrolled in Course(${course._id})`);
+                        console.log(`Student(${student.first}) already enrolled in Course(${course.name})`);
                     } else {
                         student.courses.push(course);
                         student.save();
@@ -35,7 +35,7 @@ router.post("/:cid/enroll/:sid", isLoggedIn, (req, res) => {
 
                     // Check if course has student
                     if (course.students.indexOf(student._id) !== -1) {
-                        console.log(`Course(${course._id}) already has Student(${student._id})`);
+                        console.log(`Course(${course.name}) already has Student(${student.first})`);
                     } else {
                         course.students.push(student);
                         course.save();
