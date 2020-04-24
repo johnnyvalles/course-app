@@ -24,10 +24,23 @@ router.post("/:cid/enroll/:sid", isLoggedIn, (req, res) => {
                 if (err) {
                     console.log(err);
                 } else {
-                    course.students.push(student);
-                    student.courses.push(course);
-                    course.save();
-                    student.save();
+
+                    // Check if student has course
+                    if (student.courses.indexOf(course._id) !== -1) {
+                        console.log(`Student(${student._id}) already enrolled in Course(${course._id})`);
+                    } else {
+                        student.courses.push(course);
+                        student.save();
+                    }
+
+                    // Check if course has student
+                    if (course.students.indexOf(student._id) !== -1) {
+                        console.log(`Course(${course._id}) already has Student(${student._id})`);
+                    } else {
+                        course.students.push(student);
+                        course.save();
+                    }
+
                     res.redirect(`/courses/${req.params.cid}`);
                 }
             });
