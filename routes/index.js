@@ -22,7 +22,7 @@ router.get("/register", (req, res) => {
 
 router.get("/logout", (req, res) => {
     req.logout();
-    res.redirect("/login");
+    res.redirect("/home");
 });
 
 router.get("/dashboard", isLoggedIn, (req, res) => {
