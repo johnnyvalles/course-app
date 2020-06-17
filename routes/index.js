@@ -25,8 +25,12 @@ router.get("/logout", (req, res) => {
     res.redirect("/login");
 });
 
+router.get("/dashboard", isLoggedIn, (req, res) => {
+    res.render("dashboard");
+});
+
 router.post("/login", 
-    passport.authenticate("local", { successRedirect: "/home", failureRedirect: "/login" }), 
+    passport.authenticate("local", { successRedirect: "/dashboard", failureRedirect: "/login" }), 
     (req, res) => {}
 );
 
@@ -75,7 +79,7 @@ router.post("/register", (req, res) => {
         }
 
         passport.authenticate("local")(req, res, () => {
-            res.redirect("/home");
+            res.redirect("/dashboard");
         });
     });
 });
