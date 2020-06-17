@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 const Course = require("./models/course");
 const Student = require("./models/student");
-const Assignment = require("./models/assignment");
 const faker = require("faker");
 
 const STUD_COUNT = 3,
@@ -50,15 +49,6 @@ function createStudent() {
     return student;
 }
 
-function createAssignment() {
-    return {
-        name: "Homework",
-        points: "100",
-        released: faker.date.month() + " " + (Math.floor(Math.random() * 22) + 1),
-        due: faker.date.month() + " " + (Math.floor(Math.random() * 22) + 1)
-    };
-}
-
 function createCourse(lang, icon) {
     return {
         name: `Learn ${lang}`,
@@ -70,7 +60,7 @@ function createCourse(lang, icon) {
 }
 
 function seedDB() {
-    // Remove all People
+    // Remove all Students
     Student.deleteMany({}, (err) => {
         if (err) {
             console.log(err);
@@ -94,32 +84,6 @@ function seedDB() {
             });
         }
     });
-
-    // // Remove all Assignments
-    // Assignment.deleteMany({}, (err) => {
-    //     if (err) {
-    //         console.log(err);
-    //     } else {
-    //         console.log("Removed all assignments.");
-    //         let homeworks = [];
-
-    //         for (let i = 1; i < HW_COUNT; ++i) {
-    //             let temp = createAssignment();
-    //             temp.name += " " + String(i);
-    //             homeworks.push(temp);
-    //         }
-
-    //         homeworks.forEach((hw) => {
-    //             Assignment.create(hw, (err, newHw) => {
-    //                 if (err) {
-    //                     console.log(err);
-    //                 } else {
-    //                     console.log("Assignment added to DB.");
-    //                 }
-    //             })
-    //         });
-    //     }
-    // });
 
     // Remove all Courses
     Course.deleteMany({}, (err) => {

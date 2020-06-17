@@ -3,12 +3,10 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const methodOverride = require("method-override");
 const Student = require("./models/student");
-const Assignment = require("./models/assignment");
 const seedDB = require("./seeds");
 
 const studentRoutes = require("./routes/students");
 const courseRoutes = require("./routes/courses");
-const assignmentRoutes = require("./routes/assignments");
 const indexRoutes = require("./routes/index");
 
 const passport = require("passport");
@@ -57,7 +55,6 @@ app.use((req, res, next) => {
 app.use(indexRoutes);
 app.use("/students", studentRoutes);
 app.use("/courses", courseRoutes);
-app.use("/courses/:cid/assignments", assignmentRoutes);
 // ***********************************************************
 
 
