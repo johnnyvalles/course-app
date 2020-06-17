@@ -52,7 +52,6 @@ function createStudent() {
 function createCourse(lang, icon) {
     return {
         name: `Learn ${lang}`,
-        instructor: `${faker.name.firstName()} ${faker.name.lastName()}`,
         subject: lang,
         icon: icon, 
         description: faker.lorem.sentences(4)
