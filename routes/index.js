@@ -3,11 +3,11 @@ const passport = require("passport");
 const Student = require("../models/student");
 const Course = require("../models/course");
 
-router.get("/", isLoggedIn, (req, res) => {
-    res.render("dashboard");
+router.get("/", (req, res) => {
+    res.render("home");
 });
 
-router.get("/home", isLoggedIn, (req, res) => {
+router.get("/home", (req, res) => {
     res.redirect("/");
 });
 
