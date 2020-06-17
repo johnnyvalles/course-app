@@ -3,7 +3,6 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const methodOverride = require("method-override");
 const Student = require("./models/student");
-const seedDB = require("./seeds");
 
 const studentRoutes = require("./routes/students");
 const courseRoutes = require("./routes/courses");
@@ -24,7 +23,6 @@ mongoose.connect('mongodb://localhost:27017/learnvas',
         useFindAndModify: false
     });
 
-seedDB();
 // ***********************************************************
 
 
