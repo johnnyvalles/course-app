@@ -16,12 +16,12 @@ const expressSession = require("express-session");
 // ***********************************************************
 // Mongoose Configuration
 // ***********************************************************
-mongoose.connect('mongodb://localhost:27017/learnvas',
-    { 
-        useNewUrlParser: true, 
-        useUnifiedTopology: true,
-        useFindAndModify: false
-    });
+mongoose.connect('mongodb+srv://johnny:a7K7aXcqggGtLPXV@cluster0-y1nk1.mongodb.net/learnvas?retryWrites=true&w=majority',
+{ 
+    useNewUrlParser: true, 
+    useUnifiedTopology: true,
+    useFindAndModify: false
+});
 
 // ***********************************************************
 
