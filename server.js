@@ -16,13 +16,12 @@ const expressSession = require("express-session");
 // ***********************************************************
 // Mongoose Configuration
 // ***********************************************************
-mongoose.connect('mongodb://localhost:27017/learnvas',
+mongoose.connect(process.env.DATABASEURL,
     { 
         useNewUrlParser: true, 
         useUnifiedTopology: true,
         useFindAndModify: false
     });
-
 // ***********************************************************
 
 
