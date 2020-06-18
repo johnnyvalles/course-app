@@ -16,8 +16,8 @@ const expressSession = require("express-session");
 // ***********************************************************
 // Mongoose Configuration
 // ***********************************************************
-mongoose.connect('mongodb+srv://johnny:a7K7aXcqggGtLPXV@cluster0-y1nk1.mongodb.net/learnvas?retryWrites=true&w=majority',
-{ 
+mongoose.connect(process.env.DATABASEURL,
+{
     useNewUrlParser: true, 
     useUnifiedTopology: true,
     useFindAndModify: false
