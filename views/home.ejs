@@ -1,8 +1,11 @@
-<%- include("./partials/header.ejs") %>
-<div id="hero" class="ui segment">
-	<div class="ui container">
-		<div class="ui grid">
-			<div class="ten wide column hero-content">
+<%- include("./partials/head.ejs") %>
+<div id="landing-container">
+	<div id="menu-container" class="landing-content">
+		<%- include("./partials/menu.ejs") %>
+	</div>
+	<div id="hero-container" class="landing-content">
+		<div id="hero-content" class="ui grid">
+			<div class="ui container fourteen wide column">
 				<h1>Learn the fundamentals of computer science and programming languages. All at your own pace, bit by bit.</h1>
 				<a href="/" class="ui orange button">Learn More</a>
 				<a href="/register" class="ui blue button">Create an Account</a>
