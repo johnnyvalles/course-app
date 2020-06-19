@@ -1,0 +1,23 @@
+<div class="ui stackable inverted menu">
+    <div class="ui container">
+        <% if (currentUser) { %>
+        <a href="/dashboard"class="item"><i class="tachometer alternate icon"></i>Dashboard</a>
+        <% } else { %>
+        <a href="/"class="item"><i class="home icon"></i>Home</a>
+        <% } %>
+
+        <% if (currentUser) { %>
+        <a href="/courses" class="item"><i class="graduation hat icon"></i>Courses</a>
+        <a href="/students" class="item"><i class="address book icon"></i>Directory</a>
+        <% } %>
+        
+        <div class="right menu">
+            <% if (!currentUser) { %>
+            <a href="/login" class="item"><i class="sign-in icon"></i>Login</a>
+            <a href="/register" class="item"><i class="pencil alternate icon"></i>Register</a>
+            <% } else { %>
+            <a href="/logout" class="item"><i class="sign-out icon"></i>Logout</a>
+            <% } %>
+        </div>
+    </div>
+</div>
