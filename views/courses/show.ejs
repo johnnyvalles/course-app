@@ -5,7 +5,8 @@
         <div class="ui grid stackable">
             <div class="twelve wide column">
                 <h2><i class="<%=course.icon%> icon"></i><%= course.name %></h2>
-                <p><i class="question icon"></i>Course Objectives: <%= course.description %></p>
+                <h3>What will you be learning?</h3>
+                <p><%= course.description %></p>
                 <form action="/courses/<%=course._id%>/enroll/<%=currentUser._id%>" method="POST">
                     <input type="submit" value="Enroll Now" class="ui blue basic button">
                 </form>
