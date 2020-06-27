@@ -1,6 +1,7 @@
 const router = require("express").Router({ mergeParams: true });
 const Course = require("../models/course");
 const Student = require("../models/student");
+const isLoggedIn = require("../middleware/auth-middleware").isLoggedIn;
 
 router.use(isLoggedIn);
 
@@ -57,12 +58,5 @@ router.get("/:id", (req, res) => {
         }
     });
 });
-
-function isLoggedIn(req, res, next) {
-    if (req.isAuthenticated()) {
-        return next();
-    }
-    res.redirect("/login");
-}
 
 module.exports = router;
