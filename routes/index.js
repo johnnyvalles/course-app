@@ -2,6 +2,7 @@ const router = require("express").Router({ mergeParams: true });
 const passport = require("passport");
 const Student = require("../models/student");
 const Course = require("../models/course");
+const Announcement = require("../models/announcement");
 const isLoggedIn = require("../middleware/auth-middleware").isLoggedIn;
 
 router.get("/", (req, res) => {
@@ -27,7 +28,13 @@ router.get("/logout", (req, res) => {
 });
 
 router.get("/dashboard", isLoggedIn, (req, res) => {
-    res.render("dashboard");
+    Announcement.find({}, (err, announcements) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.render("dashboard", { announcements: announcements });
+        }
+    });
 });
 
 router.post("/login", 

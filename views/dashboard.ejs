@@ -9,9 +9,18 @@
                 <h2><i class="bullhorn icon"></i> Announcements</h2>
             </div>
             <div class="ui segments">
+                <%if (announcements.length == 0) {%>
                 <div class="ui segment">
-                    <p>There currently aren't any announcements. Check back later!</p>
+                    <p>There currently aren't any announcements. Check back later!</p>                
                 </div>
+                <%} else {%>
+                    <%announcements.forEach((announcement) => {%>
+                        <div class="ui segment">
+                            <h3><%=announcement.title%></h3>
+                            <p><%=announcement.body%></p>
+                        </div>
+                    <%})%>
+                <%}%>
             </div>
         </div>
         <div class="ui segments green segment">
